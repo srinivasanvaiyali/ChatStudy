@@ -1,3 +1,6 @@
+## Devolop By:SRINIVASAN.V
+## Reg No :212222043008
+
 # Ex. No:1b 			Study of Client Server Chat Applications
 
 ## Aim: 
@@ -69,9 +72,45 @@ User authentication mechanisms are essential to ensure secure and authorized acc
 •	Implementing real-time notifications to inform users of new messages, user presence changes, or other relevant events.
 
 
+
+
 Client-server chat applications are versatile tools that facilitate real-time communication between users over a network. They incorporate various components, including server-side and client-side elements, and must consider factors such as security, scalability, and concurrency. As technology continues to advance, client-server chat applications remain integral for collaborative communication in various domains.
 
 Client-server chat applications are foundational to real-time communication over networks. They incorporate principles of socket programming, communication protocols, and security mechanisms to provide a seamless user experience. Understanding the basics of client-server chat applications is essential for developers involved in networked application development, as they form the backbone of various collaborative communication systems. As technology evolves, chat applications continue to adapt, incorporating new features and technologies to enhance user interaction and connectivity.
+## client .py:
+import socket  
+s=socket.socket()   
+s.bind(('localhost',8000))  
+s.listen(5)   
+c,addr=s.accept()   
+size=int(input("Enter number of frames to send : "))   
+l=list(range(size))   
+s=int(input("Enter Window Size : "))   
+st=0   
+i=0   
+while True:   
+ while(i<len(l)):    
+       st+=s   
+       c.send(str(l[i:st]).encode())  
+       ack=c.recv(1024).decode()  
+       if ack:  
+           print(ack)  
+           i+=s   
+
+## Server.py 
+import socket   
+s=socket.socket()   
+s.connect(('localhost',8000))  
+while True:    
+ print(s.recv(1024).decode())   
+ s.send("acknowledgement recived from the server".encode())   
+
+## output :
+## client 
+![image](https://github.com/srinivasanvaiyali/ChatStudy/assets/145117665/ee0c75b3-ed02-44da-a730-4a4901d4fc89)
+
+## server :
+![image](https://github.com/srinivasanvaiyali/ChatStudy/assets/145117665/4bbc603d-d9eb-4502-bb60-b381757b07c7)
 
 
 ## Result:
